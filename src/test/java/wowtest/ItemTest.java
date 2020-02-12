@@ -47,10 +47,10 @@ public class ItemTest {
 
 		@Test
 		public void testcode() throws InterruptedException, FileNotFoundException {
-			System.out.println(System.getProperty("Browser"));
-			if(System.getProperty("browser") == "Chrome") {
+			System.out.println(System.getProperty("browser"));
+			if(System.getProperty("browser").equals("Chrome")) {
 				driver = new ChromeDriver();
-			} else if(System.getProperty("browser") == "Firefox") {
+			} else if(System.getProperty("browser").equals("Firefox")) {
 				driver = new FirefoxDriver();
 			} else {
 				System.out.println("Attention ! Navigateur inconnu choisi, Chrome sera utilisé par défaut");
