@@ -26,7 +26,7 @@ import org.openqa.selenium.support.PageFactory;
 import wowtest.PageAccueil;
 
 public class ItemTest {
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver;
 		public List<String> loadFile(String filePath) throws FileNotFoundException {
 			   
 		    URI uri = null;
@@ -47,6 +47,15 @@ public class ItemTest {
 
 		@Test
 		public void testcode() throws InterruptedException, FileNotFoundException {
+			System.out.println(System.getProperty("Browser"));
+			if(System.getProperty("browser") == "Chrome") {
+				driver = new ChromeDriver();
+			} else if(System.getProperty("browser") == "Firefox") {
+				driver = new FirefoxDriver();
+			} else {
+				System.out.println("Attention ! Navigateur inconnu choisi, Chrome sera utilisé par défaut");
+				driver = new ChromeDriver();
+			}
 			driver.get("https://fr.wowhead.com/");
 			driver.manage().window().maximize();
 			PageAccueil page_accueil = PageFactory.initElements(driver, PageAccueil.class);
